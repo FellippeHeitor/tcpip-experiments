@@ -76,7 +76,7 @@ DO
             IF dragging THEN
                 IF mX = originalX AND mY = originalY THEN
                     'just a click
-                    b$ = "CLICK>" + MKI$(mX - client(dragging).x) + MKI$(mY - client(dragging).y)
+                    b$ = "CLICK>" + MKI$(mX - client(dragging).x) + MKI$(mY - 40 - client(dragging).y)
                     Send client(dragging).handle, b$
                 END IF
                 dragging = false
