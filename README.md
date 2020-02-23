@@ -51,6 +51,8 @@ These two modules are the most ambitious of the trio. With regards to how they c
 
 Run the windowingHost first, and it will begin listening for connections through arbitrarily numbered port 63450.
 
-Then run the windowingClient module. You will not see a new program launch this time, but the client will instead send its rendered contents over TCP/IP to the host, which will display the window inside its own window.
+Then run the windowingClient module. This program will create a window that just displays a random number at the top and paints the window with a random color and places random dots all over.
 
-You should launch more instances of teh windowingClient to see this sample really shine. Each new instance of the client will get its own window inside the host. These are draggable and you can even click inside them. The clicks will be sent to each client and you will see them react accordingly, by drawing a circle on the indicated coordinates.
+But you will not see a new program launch this time. Instead, the client will send its rendered contents over TCP/IP to the host, which will display the window inside its own window.
+
+You should launch more instances of the windowingClient to see this sample really shine. Each new instance of the client will get its own window inside the host. These are draggable and you can even click inside them. The clicks will be sent to each client and you will see them react accordingly, by drawing a circle on the indicated coordinates.
