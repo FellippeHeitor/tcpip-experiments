@@ -27,7 +27,7 @@ If the user hits SPACE in the client window, a prompt will be presented and a co
 
 The "protocol"  for communication follows the pattern `COMMAND>contents<END>`, which gets transfered via SUB Send().
 
-Closing either side will also send a BYE message to the other party, so that connection can be properly closed.
+Closing either side will also send a BYE message to the other party, so that the connection can be properly closed.
 
 ## inform-host-client
 
