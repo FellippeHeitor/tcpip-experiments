@@ -25,7 +25,7 @@ If the user hits SPACE in the client window, a prompt will be presented and a co
 * CLS - instructs the host to clear its window.
 * BYE - disconnected from the host and ends the CLIENT execution.
 
-The "protocol"  for communication follows the pattern "COMMAND>contents<END>", which gets transfered via SUB Send().
+The "protocol"  for communication follows the pattern `COMMAND>contents<END>`, which gets transfered via SUB Send().
 
 Closing either side will also send a BYE message to the other party, so that connection can be properly closed.
 
