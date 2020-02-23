@@ -1,6 +1,6 @@
 # TCP/IP Experiments in QB64
 
-The code in this repository demonstrates how to use a local TCP/IP connection to exchange data between two running instances of QB64 programs.
+The code in this repository demonstrates how to use a local TCP/IP connection to exchange data between two running QB64 programs.
 
 # Contents
 
@@ -12,9 +12,9 @@ All of the samples below require you to "unblock" them at the first run if you a
 
 This single-module experiment works both as host and client, so you will have to run the executable twice to get to see it working.
 
-When run, it attempts to connect to an existing host. If that fails, it becomes the host itself and starts listening for connections in arbitrarily numbered port 60710.
+On startup, it attempts to connect to an existing host. If that fails, it becomes the host itself and starts listening for connections on port 60710 (no particular reason for the port number - could be anything).
 
-When a client connects, the host sends a "HELLO" message and starts listening for commands. At this point, the user can draw in the client window and see the result in the host window, as mouse data is being transferred.
+When a client connects, the host sends a "HELLO" message and starts listening for commands. At this point, the user can draw in the client window and see the result in the host window, as mouse data is being transfered.
 
 If the user hits SPACE in the client window, a prompt will be presented and a command can be typed. The available commands are:
 
@@ -35,13 +35,13 @@ Closing either side will also send a BYE message to the other party, so that con
 
 These are two separate modules written using InForm for QB64. The host waits for a client to connect and then sends commands to render graphics on the client's window.
 
-Launch both and click the "offline" text in the client, so connection can take place.
+Launch both and click the "offline" text in the client, so a connection can take place.
 
 After connected, click the buttons in the host to add a "New rectangle" or a "New circle" to the client's PictureBox control. As soon as you create either shape, you can change their color to red with the "Make it Red" button or to a random color with the appropriate button. You can only change the color of the last created shape.
 
 If you click the picture in the client's window, the image will be sent over to the host, which will display it.
 
-The "protocol"  for communication is slightly different here, with each message being marked by a "signal" the the start (using the return of the MKI$() function of an arbitraty value), followed by the data to be sent and the "<END>" marker, which is parsed for.
+The "protocol"  for communication is slightly different here, with each message being marked by a "signal" at the start (using the return of the MKI$() function of an arbitraty value), followed by the data to be sent and the "<END>" marker, which is parsed for.
 
 ## windowing-host-client
 
