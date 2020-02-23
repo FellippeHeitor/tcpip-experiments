@@ -1,0 +1,282 @@
+': This program uses
+': InForm - GUI library for QB64 - Beta version 7
+': Fellippe Heitor, 2016-2018 - fellippe@qb64.org - @fellippeheitor
+': https://github.com/FellippeHeitor/InForm
+'-----------------------------------------------------------
+
+': Controls' IDs: ------------------------------------------------------------------
+DIM SHARED TheClient AS LONG
+DIM SHARED ConnectionStatusLB AS LONG
+DIM SHARED offlineLB AS LONG
+DIM SHARED PictureBox1 AS LONG
+
+': External modules: ---------------------------------------------------------------
+'$INCLUDE:'InForm\InForm.ui'
+'$INCLUDE:'InForm\xp.uitheme'
+'$INCLUDE:'TheClient.frm'
+
+': Event procedures: ---------------------------------------------------------------
+SUB __UI_BeforeInit
+
+END SUB
+
+SUB __UI_OnLoad
+
+END SUB
+
+SUB __UI_BeforeUpdateDisplay
+    'This event occurs at approximately 30 frames per second.
+    'You can change the update frequency by calling SetFrameRate DesiredRate%
+
+END SUB
+
+SUB __UI_BeforeUnload
+    'If you set __UI_UnloadSignal = False here you can
+    'cancel the user's request to close.
+
+END SUB
+
+SUB __UI_Click (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_MouseEnter (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_MouseLeave (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_FocusIn (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_FocusOut (id AS LONG)
+    'This event occurs right before a control loses focus.
+    'To prevent a control from losing focus, set __UI_KeepFocus = True below.
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_MouseDown (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_MouseUp (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_KeyPress (id AS LONG)
+    'When this event is fired, __UI_KeyHit will contain the code of the key hit.
+    'You can change it and even cancel it by making it = 0
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_TextChanged (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_ValueChanged (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_FormResized
+
+END SUB
+
+ND SELECT
+                EndDraw PictureBox1
+            CASE 5 'make it a random color
+                _TITLE "Random RGB"
+                BeginDraw PictureBox1
+                SELECT CASE lastshape
+                    CASE 2
+                        LINE (shapex, shapey)-STEP(shapew, shapeh), _RGB32(RND * 255, RND * 255, RND * 255), BF
+                        'PRINT shapex; shapey; shapew; shapeh
+                    CASE 3
+                        CIRCLE (shapex, shapey), radius, _RGB32(RND * 255, RND * 255, RND * 255)
+                        'PRINT shapex; shapey; radius
+                END SELECT
+                EndDraw PictureBox1
+        END SELECT
+        stream$ = MID$(stream$, INSTR(stream$, "<END>") + 5)
+    END IF
+
+END SUB
+
+SUB __UI_BeforeUnload
+    'If you set __UI_UnloadSignal = False here you can
+    'cancel the user's request to close.
+
+END SUB
+
+SUB __UI_Click (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+            IF Host = 0 THEN
+                Caption(offlineLB) = "Looking for host..."
+                Control(offlineLB).Redraw = True
+                start! = TIMER
+                DO
+                    __UI_DoEvents
+                    Host = _OPENCLIENT("TCP/IP:1234:localhost")
+                LOOP UNTIL Host < 0 OR TIMER - start! > 10
+                IF Host = 0 THEN Caption(offlineLB) = "Host not found.": EXIT SUB
+            END IF
+            Caption(offlineLB) = "Connected."
+        CASE PictureBox1
+            IF Host = 0 THEN EXIT SUB
+            DIM Buffer AS _MEM, Offset AS _OFFSET, lastOffset AS _OFFSET
+            Buffer = _MEMIMAGE(Control(PictureBox1).HelperCanvas)
+            Offset = Buffer.OFFSET
+            lastOffset = Buffer.OFFSET + _WIDTH(Control(PictureBox1).HelperCanvas) * _HEIGHT(Control(PictureBox1).HelperCanvas) * 4
+
+            signal$ = MKI$(2)
+            s$ = SPACE$(lastOffset - Offset)
+            _MEMGET Buffer, Offset, s$
+            signal$ = signal$ + s$
+            _MEMFREE Buffer
+            signal$ = signal$ + "<END>"
+            PUT #Host, , signal$
+    END SELECT
+END SUB
+
+SUB __UI_MouseEnter (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_MouseLeave (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_FocusIn (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_FocusOut (id AS LONG)
+    'This event occurs right before a control loses focus.
+    'To prevent a control from losing focus, set __UI_KeepFocus = True below.
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_MouseDown (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_MouseUp (id AS LONG)
+    SELECT CASE id
+        CASE TheClient
+
+        CASE ConnectionStatusLB
+
+        CASE offlineLB
+
+        CASE PictureBox1
+
+    END SELECT
+END SUB
+
+SUB __UI_KeyPress (id AS LONG)
+    'When this event is fired, __UI_KeyHit will contain the code of the key hit.
+    'You can change it and even cancel it by making it = 0
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_TextChanged (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_ValueChanged (id AS LONG)
+    SELECT CASE id
+    END SELECT
+END SUB
+
+SUB __UI_FormResized
+
+END SUB
+
