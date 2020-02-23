@@ -8,6 +8,8 @@ All of the samples below require you to "unblock" them at the first run, as Wind
 
 ## simple-host-client
 
+![](screenshots/drawing.png?raw=true)
+
 This single-module experiment works both as host and client, so you will have to run the executable twice to get to see it working.
 
 When run, it attempts to connect to an existing host. If that fails, it becomes the host itself and starts listening for connections in arbitrarily numbered port 60710.
@@ -29,6 +31,8 @@ Closing either side will also send a BYE message to the other party, so that con
 
 ## inform-host-client
 
+![](screenshots/inform.png?raw=true)
+
 These are two separate modules written using InForm for QB64. The host waits for a client to connect and then sends commands to render graphics on the client's window.
 
 Launch both and click the "offline" text in the client, so connection can take place.
@@ -40,6 +44,8 @@ If you click the picture in the client's window, the image will be sent over to 
 The "protocol"  for communication is slightly different here, with each message being marked by a "signal" the the start (using the return of the MKI$() function of an arbitraty value), followed by the data to be sent and the "<END>" marker, which is parsed for.
 
 ## windowing-host-client
+
+![](screenshots/windowing.png?raw=true)
 
 These two modules are the most ambitious of the trio. With regards to how they communicate, they still work the same as the samples before. The message protocol here is more similar to the first _simple-host-client_ sample above, but the contents being shared are what make this one different.
 
