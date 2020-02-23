@@ -113,7 +113,7 @@ SUB __UI_BeforeUpdateDisplay
                     thisData$ = MID$(thisData$, 5 + length)
                 NEXT
 
-                $CONSOLE
+                '$CONSOLE
                 PD = _DEST
                 _DEST _CONSOLE
                 FOR i = 1 TO size&
