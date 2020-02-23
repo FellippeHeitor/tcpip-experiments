@@ -53,4 +53,4 @@ Run the windowingHost first, and it will begin listening for connections through
 
 Then run the windowingClient module. You will not see a new program launch this time, but the client will instead send its rendered contents over TCP/IP to the host, which will display the window inside its own window.
 
-You should launch more instances of teh windowingClient to see this sample really shine. Each new instance of the client will get its own window inside the host. These are draggable and you can even click inside them. The clicks will be sent to each host and you will see them react accordingly, by drawing a circle on the indicated coordinates.
+You should launch more instances of teh windowingClient to see this sample really shine. Each new instance of the client will get its own window inside the host. These are draggable and you can even click inside them. The clicks will be sent to each client and you will see them react accordingly, by drawing a circle on the indicated coordinates.
