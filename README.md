@@ -41,7 +41,7 @@ After connected, click the buttons in the host to add a "New rectangle" or a "Ne
 
 If you click the picture in the client's window, the image will be sent over to the host, which will display it.
 
-The "protocol"  for communication is slightly different here, with each message being marked by a "signal" at the start (using the return of the MKI$() function of an arbitraty value), followed by the data to be sent and the "<END>" marker, which is parsed for.
+The "protocol"  for communication is slightly different here, with each message being marked by a "signal" at the start (using the return of the MKI$() function of an arbitraty value), followed by the data to be sent and the `<END>` marker, which is parsed for.
 
 ## windowing-host-client
 
