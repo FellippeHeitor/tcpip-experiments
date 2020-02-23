@@ -4,7 +4,7 @@ The code in this repository demonstrates how to use a local TCP/IP connection to
 
 # Contents
 
-All of the samples below require you to "unblock" them at the first run, as Windows requests your permission for them to open a port for local communication.
+All of the samples below require you to "unblock" them at the first run if you are on Windows, as the OS requests your permission for them to open a port for local communication.
 
 ## simple-host-client
 
